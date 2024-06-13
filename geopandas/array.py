@@ -71,16 +71,6 @@ class GeometryDtype(ExtensionDtype):
 
 register_extension_dtype(GeometryDtype)
 
-branch_coverage_check_crs = {
-    "_check_crs1": False,
-    "_check_crs2": False,
-    "_check_crs3": False,
-    "_check_crs4": False,
-}
-
-def print_coverage_check_crs():
-    print(branch_coverage_check_crs)
-
 def _check_crs(left, right, allow_none=False):
     """
     Check if the projection of both arrays is the same.
@@ -327,13 +317,13 @@ class GeometryArray(ExtensionArray):
 
     _dtype = GeometryDtype()
 
-    def __init__(self, data,coverage_set_state,crs=None):
-        coverage_set_state={
-            "set_state_1": False,
-            "set_state_2": False,
-            "set_state_3": False,
-            "set_state_4": False,
-        }
+    def __init__(self, data,crs=None): #coverage_set_state=None
+        #coverage_set_state={
+        #    "set_state_1": False,
+        #    "set_state_2": False,
+        #    "set_state_3": False,
+        #    "set_state_4": False,
+        #}
         if isinstance(data, self.__class__):
             if not crs:
                 crs = data.crs
@@ -496,19 +486,19 @@ class GeometryArray(ExtensionArray):
     def __setstate__(self, state):
         if not isinstance(state, dict):
             # pickle file saved with pygeos
-            self.coverage_set_state["set_state_1"] = True
+        #    self.coverage_set_state["set_state_1"] = True
             geoms = shapely.from_wkb(state[0])
             self._crs = state[1]
             self._sindex = None  # pygeos.STRtree could not be pickled yet
             self._data = geoms
             self.base = None
         else:
-            self.coverage_set_state["set_state_2"] = True
+         #   self.coverage_set_state["set_state_2"] = True
             if "data" in state:
-                self.coverage_set_state["set_state_3"] = True
+         #       self.coverage_set_state["set_state_3"] = True
                 state["_data"] = state.pop("data")
             if "_crs" not in state:
-                self.coverage_set_state["set_state_4"] = True
+        #        self.coverage_set_state["set_state_4"] = True
                 state["_crs"] = None
             self.__dict__.update(state)
 
