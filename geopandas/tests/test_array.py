@@ -910,8 +910,10 @@ def test_check_crs():
     t1 = T.copy()
     t1.crs = 4326
     assert _check_crs(t1, T) is False
+    print_coverage_check_crs()
     assert _check_crs(t1, t1) is True
     assert _check_crs(t1, T, allow_none=True) is True
+
 
 
 @pytest.mark.skipif(not HAS_PYPROJ, reason="pyproj not installed")

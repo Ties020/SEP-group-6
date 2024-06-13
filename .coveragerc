@@ -1,3 +1,6 @@
+[runt]
+omit = 
+    /nix/store/*
 [report]
 exclude_lines =
     pragma: no cover
@@ -11,3 +14,4 @@ omit =
     geopandas/tools/tests/*
     geopandas/_version.py
     geopandas/datasets/naturalearth_creation.py
+    /nix/store/*

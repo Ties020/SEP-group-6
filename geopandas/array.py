@@ -71,6 +71,15 @@ class GeometryDtype(ExtensionDtype):
 
 register_extension_dtype(GeometryDtype)
 
+branch_coverage_check_crs = {
+    "_check_crs1": False,
+    "_check_crs2": False,
+    "_check_crs3": False,
+    "_check_crs4": False,
+}
+
+def print_coverage_check_crs():
+    print(branch_coverage_check_crs)
 
 def _check_crs(left, right, allow_none=False):
     """
@@ -79,10 +88,14 @@ def _check_crs(left, right, allow_none=False):
     If allow_none is True, empty CRS is treated as the same.
     """
     if allow_none:
+        branch_coverage_check_crs["_check_crs1"] = True
         if not left.crs or not right.crs:
+            branch_coverage_check_crs["_check_crs2"] = True
             return True
     if not left.crs == right.crs:
+        branch_coverage_check_crs["_check_crs3"] = True
         return False
+    branch_coverage_check_crs["_check_crs4"] = True
     return True
 
 
