@@ -24,6 +24,7 @@ from geopandas.array import (
     points_from_xy,
     to_wkb,
     to_wkt,
+    print_coverage_check_crs
 )
 
 import pytest
@@ -912,7 +913,9 @@ def test_check_crs():
     assert _check_crs(t1, T) is False
     print_coverage_check_crs()
     assert _check_crs(t1, t1) is True
+    print_coverage_check_crs()
     assert _check_crs(t1, T, allow_none=True) is True
+    print_coverage_check_crs()
 
 
 
