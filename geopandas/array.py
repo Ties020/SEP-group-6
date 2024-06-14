@@ -482,19 +482,15 @@ class GeometryArray(ExtensionArray):
     def __setstate__(self, state):
         if not isinstance(state, dict):
             # pickle file saved with pygeos
-        #    self.coverage_set_state["set_state_1"] = True
             geoms = shapely.from_wkb(state[0])
             self._crs = state[1]
             self._sindex = None  # pygeos.STRtree could not be pickled yet
             self._data = geoms
             self.base = None
         else:
-         #   self.coverage_set_state["set_state_2"] = True
             if "data" in state:
-         #       self.coverage_set_state["set_state_3"] = True
                 state["_data"] = state.pop("data")
             if "_crs" not in state:
-        #        self.coverage_set_state["set_state_4"] = True
                 state["_crs"] = None
             self.__dict__.update(state)
 
