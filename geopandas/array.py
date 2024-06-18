@@ -71,6 +71,16 @@ class GeometryDtype(ExtensionDtype):
 
 register_extension_dtype(GeometryDtype)
 
+coverage_crs = {
+    "crs1" : False,
+    "crs2" : False,
+    "crs3" : False,
+    "crs4" : False
+}
+def print_coverage_crs():
+    for branch, hit in coverage_crs.items():
+        print(f"{branch} was {'hit' if hit else 'not hit'}")
+
 def _check_crs(left, right, allow_none=False):
     """
     Check if the projection of both arrays is the same.
@@ -78,10 +88,14 @@ def _check_crs(left, right, allow_none=False):
     If allow_none is True, empty CRS is treated as the same.
     """
     if allow_none:
+        coverage_crs["crs1"] = True
         if not left.crs or not right.crs:
+            coverage_crs["crs2"] = True
             return True
     if not left.crs == right.crs:
+        coverage_crs["crs3"] = True
         return False
+    coverage_crs["crs4"] = True
     return True
 
 

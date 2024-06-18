@@ -20,6 +20,22 @@ import pyarrow.compute as pc
 from pyarrow import feather
 
 DATA_PATH = pathlib.Path(os.path.dirname(__file__)) / "data"
+os.sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
+
+import _geoarrow
+
+def print_percentage(flags):
+   percentage = len(flags) / sum(flags.values()) if sum(flags.values()) != 0 else 0
+   print(f"Coverage: {percentage*100}%\n")
+
+def print_coverage():
+    print()
+    for branch, hit in _geoarrow.coverage_inner_cords.items():
+        print(f"{branch} was {'hit' if hit else 'not hit'}")
+
+def test_convert_inner_coords():
+    print_coverage()
+    print_percentage(_geoarrow.coverage_inner_cords)
 
 
 def pa_table(table):

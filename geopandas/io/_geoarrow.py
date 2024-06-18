@@ -205,20 +205,32 @@ def construct_wkb_array(
     parr = pa.array(np.asarray(wkb_arr), pa.binary())
     return field, parr
 
-
+coverage_inner_cords = {
+    "cov1":False,
+    "cov2":False,
+    "cov3":False,
+    "cov4":False,
+    "cov5":False,
+    "cov6":False,
+}
 def _convert_inner_coords(coords, interleaved, dims, mask=None):
     if interleaved:
+        coverage_inner_cords["cov1"] = True
         coords_field = pa.field(dims, pa.float64(), nullable=False)
         typ = pa.list_(coords_field, len(dims))
         if mask is None:
+            coverage_inner_cords["cov2"] = True
             # mask keyword only added in pyarrow 15.0.0
             parr = pa.FixedSizeListArray.from_arrays(coords.ravel(), type=typ)
         else:
+            coverage_inner_cords["cov3"] = True
             parr = pa.FixedSizeListArray.from_arrays(
                 coords.ravel(), type=typ, mask=mask
             )
     else:
+        coverage_inner_cords["cov4"] = True
         if dims == "xy":
+            coverage_inner_cords["cov5"] = True
             fields = [
                 pa.field("x", pa.float64(), nullable=False),
                 pa.field("y", pa.float64(), nullable=False),
@@ -227,6 +239,7 @@ def _convert_inner_coords(coords, interleaved, dims, mask=None):
                 [coords[:, 0].copy(), coords[:, 1].copy()], fields=fields, mask=mask
             )
         else:
+            coverage_inner_cords["cov6"] = True
             fields = [
                 pa.field("x", pa.float64(), nullable=False),
                 pa.field("y", pa.float64(), nullable=False),
