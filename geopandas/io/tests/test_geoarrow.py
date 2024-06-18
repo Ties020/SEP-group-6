@@ -28,15 +28,21 @@ def print_percentage(flags):
    percentage = len(flags) / sum(flags.values()) if sum(flags.values()) != 0 else 0
    print(f"Coverage: {percentage*100}%\n")
 
-def print_coverage():
-    print()
-    for branch, hit in _geoarrow.coverage_inner_cords.items():
+def print_coverage(coverage_dict):
+    for branch, hit in coverage_dict.items():
         print(f"{branch} was {'hit' if hit else 'not hit'}")
 
 def test_convert_inner_coords():
-    print_coverage()
+    print()
+    print("convert_inner_coords coverage:")
+    print_coverage(_geoarrow.coverage_inner_cords)
     print_percentage(_geoarrow.coverage_inner_cords)
 
+def test_construct_shapely_array():
+    print()
+    print("construct_shapely_array coverage:")
+    print_coverage(_geoarrow.coverage_shapely_array)
+    print_percentage(_geoarrow.coverage_shapely_array)
 
 def pa_table(table):
     if Version(pa.__version__) < Version("14.0.0"):

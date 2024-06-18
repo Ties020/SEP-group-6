@@ -567,6 +567,17 @@ def _get_inner_coords(arr):
         return np.asarray(arr.values).reshape(len(arr), -1)
 
 
+coverage_shapely_array ={
+    "cov1": False,
+    "cov2": False,
+    "cov3": False,
+    "cov4": False,
+    "cov5": False,
+    "cov6": False,
+    "cov7": False,
+    "cov8": False,
+    "cov9": False
+}
 def construct_shapely_array(arr: pa.Array, extension_name: str):
     """
     Construct a NumPy array of shapely geometries from a pyarrow.Array
@@ -574,19 +585,23 @@ def construct_shapely_array(arr: pa.Array, extension_name: str):
 
     """
     if isinstance(arr, pa.ExtensionArray):
+        coverage_inner_cords["cov1"] = True
         arr = arr.storage
 
     if extension_name == "geoarrow.point":
+        coverage_inner_cords["cov2"] = True
         coords = _get_inner_coords(arr)
         result = shapely.from_ragged_array(GeometryType.POINT, coords, None)
 
     elif extension_name == "geoarrow.linestring":
+        coverage_inner_cords["cov3"] = True
         coords = _get_inner_coords(arr.values)
         offsets1 = np.asarray(arr.offsets)
         offsets = (offsets1,)
         result = shapely.from_ragged_array(GeometryType.LINESTRING, coords, offsets)
 
     elif extension_name == "geoarrow.polygon":
+        coverage_inner_cords["cov4"] = True
         coords = _get_inner_coords(arr.values.values)
         offsets2 = np.asarray(arr.offsets)
         offsets1 = np.asarray(arr.values.offsets)
@@ -594,12 +609,14 @@ def construct_shapely_array(arr: pa.Array, extension_name: str):
         result = shapely.from_ragged_array(GeometryType.POLYGON, coords, offsets)
 
     elif extension_name == "geoarrow.multipoint":
+        coverage_inner_cords["cov5"] = True
         coords = _get_inner_coords(arr.values)
         offsets1 = np.asarray(arr.offsets)
         offsets = (offsets1,)
         result = shapely.from_ragged_array(GeometryType.MULTIPOINT, coords, offsets)
 
     elif extension_name == "geoarrow.multilinestring":
+        coverage_inner_cords["cov6"] = True
         coords = _get_inner_coords(arr.values.values)
         offsets2 = np.asarray(arr.offsets)
         offsets1 = np.asarray(arr.values.offsets)
@@ -609,6 +626,7 @@ def construct_shapely_array(arr: pa.Array, extension_name: str):
         )
 
     elif extension_name == "geoarrow.multipolygon":
+        coverage_inner_cords["cov7"] = True
         coords = _get_inner_coords(arr.values.values.values)
         offsets3 = np.asarray(arr.offsets)
         offsets2 = np.asarray(arr.values.offsets)
@@ -617,10 +635,12 @@ def construct_shapely_array(arr: pa.Array, extension_name: str):
         result = shapely.from_ragged_array(GeometryType.MULTIPOLYGON, coords, offsets)
 
     else:
+        coverage_inner_cords["cov8"] = True
         raise ValueError(extension_name)
 
     # apply validity mask
     if arr.null_count:
+        coverage_inner_cords["cov9"] = True
         mask = np.asarray(arr.is_null())
         result = np.where(mask, None, result)
 
