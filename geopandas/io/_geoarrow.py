@@ -213,6 +213,7 @@ coverage_inner_cords = {
     "cov5":False,
     "cov6":False,
 }
+
 def _convert_inner_coords(coords, interleaved, dims, mask=None):
     if interleaved:
         coverage_inner_cords["cov1"] = True
