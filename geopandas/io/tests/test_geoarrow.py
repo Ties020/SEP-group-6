@@ -22,56 +22,9 @@ from pyarrow import feather
 DATA_PATH = pathlib.Path(os.path.dirname(__file__)) / "data"
 os.sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
 
-import _geoarrow
-import string, random
-from shapely import GeometryType
-
 def print_percentage(flags):
    percentage = len(flags) / sum(flags.values()) if sum(flags.values()) != 0 else 0
    print(f"Coverage: {percentage*100}%\n")
-
-def print_coverage(coverage_dict):
-    for branch, hit in coverage_dict.items():
-        print(f"{branch} was {'hit' if hit else 'not hit'}")
-
-def test_convert_inner_coords():
-   # assert _geoarrow._convert_inner_coords(coords,False,"xyz")
-   # assert _geoarrow._convert_inner_coords(coords,False,"xyz",mask)
-   # assert _geoarrow._convert_inner_coords(coords,True,"xyz")
-   # assert _geoarrow._convert_inner_coords(coords,True,"xyz",mask)
-    print()
-    print("convert_inner_coords coverage:")
-    print_coverage(_geoarrow.coverage_inner_cords)
-    print_percentage(_geoarrow.coverage_inner_cords)
-
-def test_construct_shapely_array():
-    test_geoarrow_point()
-    #assert _geoarrow.construct_shapely_array(arr, "geoarrow.linestring")
-    #assert _geoarrow.construct_shapely_array(arr, "geoarrow.polygon")
-    #assert _geoarrow.construct_shapely_array(arr, "geoarrow.multipoint")
-    #assert _geoarrow.construct_shapely_array(arr, "geoarrow.multilinestring")
-    #assert _geoarrow.construct_shapely_array(arr, "geoarrow.multipolygon")
-
-    #chars = string.ascii_letters + string.digits + string.punctuation
-    #randString = random.choices(chars,k=25)
-    #with pytest.raises(ValueError):
-    #    _geoarrow.construct_shapely_array(, randString)
-
-    print()
-    print("construct_shapely_array coverage:")
-    print_coverage(_geoarrow.coverage_shapely_array)
-    print_percentage(_geoarrow.coverage_shapely_array)
-
-def test_geoarrow_point():
-    coords = np.array([1.0, 2.0])
-    testArr = pa.ExtensionArray.from_storage(
-        pa.ExtensionArray(GeometryType.POINT, {}),
-        pa.array(coords))
-    res = _geoarrow.construct_shapely_array(testArr, "geoarrow.point")
-    expected = np.array(Point(1.0, 2.0))
-    
-    for r, e in zip(res, expected):
-        assert r.equals(e), f"Expected {e}, but got {r}"
 
 
 def pa_table(table):
