@@ -26,7 +26,6 @@ _VALID_URLS.discard("")
 # file:// URIs are supported by fiona/pyogrio -> don't already open + read the file here
 _VALID_URLS.discard("file")
 
-
 fiona = None
 fiona_env = None
 fiona_import_error = None
@@ -101,38 +100,62 @@ def _check_pyogrio(func):
             "or does not import correctly."
             "\nImporting pyogrio resulted in: {pyogrio_import_error}"
         )
+    
 
+coverage_branches_cheng = {
+    "enter": False,
+    "engine_none_import_geopandas": False,
+    "engine_none_import_gyoprio": False,
+    "engine_none_check_gyoprio": False,
+    "engine_none_import_fona": False,
+    "engine_none_check_fiona": False,
+    "engine_pyogrio_import_pyogrio": False,
+    "engine_fiona_import_fiona": False,
+    "engine_none_import_error": False,
+    "return": False,
+}
 
 def _check_engine(engine, func):
+    coverage_branches_cheng["enter"] = True
     # if not specified through keyword or option, then default to "pyogrio" if
     # installed, otherwise try fiona
     if engine is None:
+        coverage_branches_cheng["engine_none_import_geopandas"] = True
         import geopandas
 
         engine = geopandas.options.io_engine
 
     if engine is None:
+        coverage_branches_cheng["engine_none_import_gyoprio"] = True
         _import_pyogrio()
+
         if pyogrio:
+            coverage_branches_cheng["engine_none_check_gyoprio"] = True
             engine = "pyogrio"
         else:
+            coverage_branches_cheng["engine_none_import_fona"] = True
             _import_fiona()
             if fiona:
+                coverage_branches_cheng["engine_none_check_fiona"] = True
                 engine = "fiona"
 
     if engine == "pyogrio":
+        coverage_branches_cheng["engine_pyogrio_import_pyogrio"] = True
         _import_pyogrio()
         _check_pyogrio(func)
     elif engine == "fiona":
+        coverage_branches_cheng["engine_fiona_import_fiona"] = True
         _import_fiona()
         _check_fiona(func)
     elif engine is None:
+        coverage_branches_cheng["engine_none_import_error"] = True
         raise ImportError(
             f"The {func} requires the 'pyogrio' or 'fiona' package, "
             "but neither is installed or imports correctly."
             f"\nImporting pyogrio resulted in: {pyogrio_import_error}"
             f"\nImporting fiona resulted in: {fiona_import_error}"
         )
+    coverage_branches_cheng["return"] = True
 
     return engine
 
@@ -161,12 +184,23 @@ _EXTENSION_TO_DRIVER = {
 }
 
 
+coverage_branches_expusr = {
+    "enter": False,
+    "is_str": False,
+    "is_path": False,
+    "return": False
+}
+
 def _expand_user(path):
+    coverage_branches_expusr["enter"] = True
     """Expand paths that use ~."""
     if isinstance(path, str):
+        coverage_branches_expusr["is_str"] = True
         path = os.path.expanduser(path)
     elif isinstance(path, Path):
+        coverage_branches_expusr["is_path"] = True
         path = path.expanduser()
+    coverage_branches_expusr["return"] = True
     return path
 
 
