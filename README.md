@@ -12,6 +12,7 @@
 ## Coverage Measurement
 ### Existing tool
 We used coverage.py to compute the initial branch coverage of the entire project. Which led us to improving coverage on low-percentage functions:
+
 ![whole1](https://github.com/Ties020/SEP-group-6/blob/main/report_images/whole_cover_before_1.png)
 ![whole2](https://github.com/Ties020/SEP-group-6/blob/main/report_images/whole_cover_before_2.png)
 
@@ -71,6 +72,7 @@ We used coverage.py to compute the initial branch coverage of the entire project
     
   * For this one, the coverage has not increased by much, because I haven’t used as many lines. It has only increased by 4%. Only a few extra lines have been covered which doesn’t increase the coverage percentage by a big amount.
 In total, the coverage has increased to 40%:
+
   ![v12](https://github.com/Ties020/SEP-group-6/blob/main/report_images/voshi/total_version_coverage.png)
 
 ## Andreas
@@ -95,11 +97,12 @@ In total, the coverage has increased to 40%:
     * 
       ![i1](https://github.com/Ties020/SEP-group-6/blob/main/report_images/ivo/ivo_f1_1.png)
     * The coverage is 0% due to the fact that the function is not tested at all.
-  * **_ensure_geometry(data, crs)**
-    * Path: SEP-group-6/geopandas/geodataframe.py
-    * Commit Link: [Commit](https://github.com/Ties020/SEP-group-6/commit/6608ab1e1b9203a54a92b10aad70516a87629788)
+     
+  * **render_pep440_pre(pieces: Dict[str, Any])**
+    * Path: SEP-group-6/geopandas/_version.py
+    * Commit Link: [Commit](https://github.com/Ties020/SEP-group-6/commit/7a4bcebb6c6e7cdeefe89099e48c2fd30fe9e8df)
     * 
-      ![i2](https://github.com/Ties020/SEP-group-6/blob/main/report_images/ivo/ivo_f2_1.png)
+      ![i2](https://github.com/Ties020/SEP-group-6/blob/main/report_images/ivo/render_pep_old.png)
     
     * The coverage is 0% due to the fact that the function is not tested at all.
 
@@ -109,24 +112,21 @@ In total, the coverage has increased to 40%:
     * Commit Link: [Commit](https://github.com/Ties020/SEP-group-6/commit/45f26d3c10d4424a0ea6ad2a46ad8e88847abe42)
     * Old Coverage:
     
-      ![i3](https://github.com/Ties020/SEP-group-6/blob/main/report_images/ivo/ivo_f1_1.png)
+      ![i3](ASK TIES TO SCREENSHOT REPORT)
     * New Coverage:
     
-      ![i4](https://github.com/Ties020/SEP-group-6/blob/main/report_images/ivo/ivo_impr1_1.png)
-    * Initially, there were no prior tests for _tooltip_popup. As can be seen from the screenshots, the coverage improved by 100%.   For this specific function, most branches depend on the value of “fields”, thus all assert statements test the different values that fields can take. Furthermore, the parameter “type” can either be “tooltip” or “popup”, hence some of the asserts take one or the other. “gdf” is a GeoDataFrame object and there is a branch that depends on this object having specific attributes ("__plottable_column", "__folium_color"), hence we create a GeoDataFrame object with one of the columns.
+      ![i4](ASK TIES TO SCREENSHOT REPORT)
 
-* **_ensure_geometry(data, crs)**
-  * Path: SEP-group-6/geopandas/geodataframe.py
-  * Commit Link: [Commit](https://github.com/Ties020/SEP-group-6/commit/3e9be40007dd8f5cff5e19fd957d2cd4c0683abe)
+* **render_pep440_pre(pieces: Dict[str, Any])**
+  * Path: SEP-group-6/geopandas/_version.py
+  * Commit Link: [Commit](https://github.com/Ties020/SEP-group-6/commit/ec3a9fed44944b0c1e28146bfaabc7f63ab5789e)
   * Old Coverage:
 
-     ![i5](https://github.com/Ties020/SEP-group-6/blob/main/report_images/ivo/ivo_f2_1.png)
+     ![i5](ASK TIES SCREENSHOT REPORT)
 
   * New Coverage:
-
-    ![i6](https://github.com/Ties020/SEP-group-6/blob/main/report_images/ivo/ivo_impr2_1.png)
-
-    * As with the previous function, prior to instrumentation, _ensure_geometry was not tested at all, hence the initial 0% coverage and 100% overall coverage improvement. The “data” parameter can take different types: GeoSeries, Series, GeometryArray and a simple list of Point objects. To improve coverage various assertions were added that pass one of the previously mentioned types. Furthermore, the parameter “crs” takes an integer value or can be omitted entirely. Whether this parameter is used or not also matters for which branches are hit, thus, a test is added in the scenario where crs is None. The “data” object may or may not have an attribute “crs”, which lead to certain branches being hit or not.
+   
+    ![i6](ASK TIES SCREENSHOT REPORT)
 
 
 ## Ties
