@@ -18,40 +18,6 @@ from geopandas.testing import assert_geodataframe_equal, assert_geoseries_equal
 from geopandas.tests.util import PACKAGE_DIR, validate_boro_df
 from pandas.testing import assert_frame_equal, assert_index_equal, assert_series_equal
 
-from geopandas.geodataframe import coverage_ensure_geometry, _ensure_geometry
-
-def print_percentage(flags):
-   percentage = sum(flags.values()) / len(flags) 
-   print(f"Coverage: {percentage*100}%\n")
-
-def print_coverage(coverage_dict):
-    for branch, hit in coverage_dict.items():
-        print(f"{branch} was {'hit' if hit else 'not hit'}")
-
-def test_ensure_geometry():
-    data = GeoSeries([Point(1,2), Point(3,4), Point(5,6)])
-    res = _ensure_geometry(data, crs = 4326)
-    assert isinstance(res, GeoSeries)
-
-    data = GeoSeries([Point(1,2), Point(3,4)])
-    res = _ensure_geometry(data)
-    assert isinstance(res, GeoSeries)
-
-    data = from_shapely([Point(1,2), Point(5,6)])
-    res = _ensure_geometry(data, crs = 3857)
-    assert res.crs == 3857
-
-    data = pd.Series([Point(1,2), Point(5,4)])
-    res = _ensure_geometry(data, crs = 4326)
-    assert isinstance(res, GeoSeries)
-
-    data = [Point(1,2), Point(7,8)]
-    res = _ensure_geometry(data, crs=3857)
-
-    print()
-    print("ensure_geometry coverage:")
-    print_coverage(coverage_ensure_geometry)
-    print_percentage(coverage_ensure_geometry)
 
 @pytest.fixture
 def dfs(request):

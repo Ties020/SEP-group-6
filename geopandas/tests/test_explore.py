@@ -38,15 +38,26 @@ def test_tooltip_popup():
     data = {
         'name': ['A', 'B'],
         'value': [1, 2],
-        'geometry': [Point(1, 2), Point(3, 4)]
+        'geometry': [Point(1, 2), Point(3, 4)],
+        '__folium_color':['green','yellow']
     }
-    assert _tooltip_popup('tooltip', False, data()) is None
-    assert _tooltip_popup('tooltip', None, data()) is None
-    assert isinstance(_tooltip_popup('tooltip', True, data), folium.GeoJsonToolTip)
-    assert isinstance(_tooltip_popup('popup', True, data), folium.GeoJsonPopup)
+    df = gpd.GeoDataFrame(data, crs=4326)
+
+    assert _tooltip_popup('tooltip', False, df) is None
+    assert _tooltip_popup('tooltip', None, df) is None
+    assert _tooltip_popup('tooltip', 0, df) is None
+    
+    res = _tooltip_popup('tooltip', 2, df)
+    assert isinstance(res, folium.GeoJsonTooltip)
+
+    res = _tooltip_popup('popup', True, df)
+    assert isinstance(res, folium.GeoJsonPopup)
+
+    res = _tooltip_popup("popup", "name", df)
+    assert isinstance(res, folium.GeoJsonPopup)
 
     print()
-    print("convert_inner_coords coverage:")
+    print("tooltip_popup coverage:")
     print_coverage(coverage_tool_tip)
     print_percentage(coverage_tool_tip)
 

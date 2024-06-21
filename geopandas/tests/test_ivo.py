@@ -3,6 +3,9 @@ import folium
 from shapely import Point
 import geopandas as gp
 import pyproj
+from geopandas.array import from_shapely
+from geopandas import GeoSeries
+import pandas as pd
 
 os.sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
 from explore import coverage_tool_tip, _tooltip_popup

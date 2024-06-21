@@ -38,15 +38,6 @@ def _geodataframe_constructor_with_fallback(*args, **kwargs):
     return df
 
 
-coverage_ensure_geometry={
-    "branch1" : False,
-    "branch2" : False,
-    "branch3" : False,
-    "branch4" : False,
-    "branch5" : False,
-    "branch6" : False,
-    "branch7" : False,
-}    
 def _ensure_geometry(data, crs=None):
     """
     Ensure the data is of geometry dtype or converted to it.
@@ -57,29 +48,21 @@ def _ensure_geometry(data, crs=None):
     If the input is a GeometryDtype with a set CRS, `crs` is ignored.
     """
     if is_geometry_type(data):
-        coverage_ensure_geometry['branch1'] = True
         if isinstance(data, Series):
-            coverage_ensure_geometry['branch2'] = True
             data = GeoSeries(data)
         if data.crs is None and crs is not None:
-            coverage_ensure_geometry['branch3'] = True
             # Avoids caching issues/crs sharing issues
             data = data.copy()
             if isinstance(data, GeometryArray):
-                coverage_ensure_geometry['branch4'] = True
                 data.crs = crs
             else:
-                coverage_ensure_geometry['branch5'] = True
                 data.array.crs = crs
         return data
     else:
-        coverage_ensure_geometry['branch5'] = True
         if isinstance(data, Series):
-            coverage_ensure_geometry['branch6'] = True
             out = from_shapely(np.asarray(data), crs=crs)
             return GeoSeries(out, index=data.index, name=data.name)
         else:
-            coverage_ensure_geometry['branch7'] = True
             out = from_shapely(data, crs=crs)
             return out
 
