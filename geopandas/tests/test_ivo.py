@@ -9,6 +9,7 @@ import pandas as pd
 
 os.sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
 from explore import coverage_tool_tip, _tooltip_popup
+from _version import coverage_render_pep440_pre, render_pep440_pre
 
 def print_percentage(flags):
    percentage = sum(flags.values()) / len(flags) 
@@ -44,3 +45,33 @@ def test_tooltip_popup():
     print("tooltip_popup coverage:")
     print_coverage(coverage_tool_tip)
     print_percentage(coverage_tool_tip)
+
+def test_render_pep440_pre():
+    testDict = {
+        "closest-tag": None,
+        "distance": 5
+    }
+    assert render_pep440_pre(testDict) == "0.post0.dev5"
+
+    testDict = {
+        "closest-tag": "1.0.0",
+        "distance": 0
+    }
+    assert render_pep440_pre(testDict) == "1.0.0"
+
+    testDict = {
+        "closest-tag": "1.0.0",
+        "distance": 3
+    }
+    assert render_pep440_pre(testDict) == "1.0.0.post0.dev3"
+
+    testDict = {
+        "closest-tag": "1.0.0.post2",
+        "distance": 4
+    }
+    assert render_pep440_pre(testDict) == "1.0.0.post3.dev4"
+
+    print()
+    print("render_pep440_pre coverage:")
+    print_coverage(coverage_render_pep440_pre)
+    print_percentage(coverage_render_pep440_pre)
