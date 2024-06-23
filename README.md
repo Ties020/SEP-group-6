@@ -1,6 +1,7 @@
 # Report Assignment 1 (Still Draft)
 ### By Group 6 : Voshon Fredison, Andreas Johannessen, Ivaylo Matsaliev, and Ties Schasfoort
-## Project : [Geopandas](https://github.com/geopandas/geopandas)
+## Tools/Repos
+### Selected Project : [Geopandas](https://github.com/geopandas/geopandas)
 ### Programming language: Python
 ### Counting Lines Tool : [Lizard](https://github.com/terryyin/lizard)
 ### Coverage Tool : [coverage.py](https://github.com/nedbat/coveragepy)
@@ -18,10 +19,9 @@ We used coverage.py to compute the initial branch coverage of the entire project
 
 ## Voshon
 * **render(pieces: Dict[str, Any], style: str)**
-  * File Path: SEP-group-6/geopandas/tests/test_version.py
-  * File Tested Path: SEP-group-6/geopandas/_version.py
+  * File: SEP-group-6/geopandas/_version.py
   * Commit Link: [Commit](https://github.com/Ties020/SEP-group-6/pull/6/commits/30015df96bbebacf17c9ecdb8dbcf7bc96e4a044)
-  * ![v1](https://github.com/Ties020/SEP-group-6/blob/main/report_images/voshi/print_coverage_percentage.png)
+    ![v1](https://github.com/Ties020/SEP-group-6/blob/main/report_images/voshi/print_coverage_percentage.png)
     
   * This is the tool I used to gather my own coverage percentage.
     The following is the added information for this function:
@@ -37,85 +37,117 @@ We used coverage.py to compute the initial branch coverage of the entire project
     ![v4](https://github.com/Ties020/SEP-group-6/blob/main/report_images/voshi/render_branch_hit.png)
 
 * **render_pep440(pieces: Dict[str,Any])**
-  * File path: SEP-group-6/geopandas/tests/test_version.py
-  * File tested path: SEP-group-6/geopandas/_version.py
+  * File: SEP-group-6/geopandas/_version.py
   * Commit Link: [Commit](https://github.com/Ties020/SEP-group-6/pull/6/commits/4ec485c35c55182c3a561a3c1bd5de67b74b9e59)
   * For the second function, I have done the same:
     
     ![v5](https://github.com/Ties020/SEP-group-6/blob/main/report_images/voshi/coverage_flags_extra.png)
-  * In this function there are fewer branches so I did not have to add many flags. I also did the same as I’ve done for the     previous one and that is to add the flags in each branch:
+  * In this function there are fewer branches so I did not have to add many flags. I also did the same as I’ve done for the previous one and that is to add the flags in each branch:
     
     ![v6](https://github.com/Ties020/SEP-group-6/blob/main/report_images/voshi/coverage_flags_extra_examples.png)
   * After all of this I was able to get another 100% branch coverage:
     
     ![v7](https://github.com/Ties020/SEP-group-6/blob/main/report_images/voshi/render_pep440_branch_hit.png)
+    
 ### Coverage Improvement
 * **render(pieces: Dict[str, Any], style: str)**
-  * File path: SEP-group-6/geopandas/tests/test_version.py
-  * File tested path: SEP-group-6/geopandas/_version.py
+  * Tested File: SEP-group-6/geopandas/_version.py
+  * Test: SEP-group-6/geopandas/tests/test_version.py
   * Commit Link: [Commit](https://github.com/Ties020/SEP-group-6/pull/6/commits/30015df96bbebacf17c9ecdb8dbcf7bc96e4a044)
-  * Old coverage for _version.py:
+  * Old coverage:
+    
     ![v8](https://github.com/Ties020/SEP-group-6/blob/main/report_images/voshi/old_cov_version.png)
   * New coverage:
+    
     ![v9](https://github.com/Ties020/SEP-group-6/blob/main/report_images/voshi/new_cov_ver_render.png)
     
   * The percentage has increased by 18%. This is because there are not many misses anymore. The “render” function I have covered had a lot of branches that weren’t tested, so I made my test check all of the possible branches in that function.
 
 * **render_pep440(pieces: Dict[str, Any])**
-  * File path: SEP-group-6/geopandas/tests/test_version.py
-  * File tested path: SEP-group-6/geopandas/_version.py
+  * Tested File: SEP-group-6/geopandas/_version.py
+  * Test: SEP-group-6/geopandas/tests/test_version.py
   * Commit Link: [Commit](https://github.com/Ties020/SEP-group-6/pull/6/commits/4ec485c35c55182c3a561a3c1bd5de67b74b9e59)
-  * Old coverage for _version.py:
-   ![v10](https://github.com/Ties020/SEP-group-6/blob/main/report_images/voshi/old_cov_version.png)
-  * New coverage:  
-   ![v11](https://github.com/Ties020/SEP-group-6/blob/main/report_images/voshi/new_coverage_version_render_pep440.png)
+  * Old coverage:
     
+    ![v10](https://github.com/Ties020/SEP-group-6/blob/main/report_images/voshi/old_cov_version.png)
+  * New coverage:
+    
+    ![v11](https://github.com/Ties020/SEP-group-6/blob/main/report_images/voshi/new_coverage_version_render_pep440.png)
+ 
   * For this one, the coverage has not increased by much, because I haven’t used as many lines. It has only increased by 4%. Only a few extra lines have been covered which doesn’t increase the coverage percentage by a big amount.
+
 In total, the coverage has increased to 40%:
 
   ![v12](https://github.com/Ties020/SEP-group-6/blob/main/report_images/voshi/total_version_coverage.png)
 
 ## Andreas
   * **_check_engine(engine, func)**
-    * File path: SEP-group-6/geopandas/io/file.py
+    * File: SEP-group-6/geopandas/io/file.py
     * Commit Link: [Commit](https://github.com/Ties020/SEP-group-6/commit/471b901ac9ceb74e993386c57ab807c96424eb0b)
     * Screenshot of coverage results:
       
-      ![a1](https://github.com/Ties020/SEP-group-6/blob/main/report_images/andy/andy_f1_1.png)
-  * **_expand_user(path)**
-    * File path: SEP-group-6/geopandas/io/file.py
-    * Commit Link: [Commit](https://github.com/Ties020/SEP-group-6/commit/471b901ac9ceb74e993386c57ab807c96424eb0b)
+       ![a1](https://github.com/Ties020/SEP-group-6/blob/main/report_images/andy/andy_f1_1.png)
+      
+  * **render_git_describe_long(pieces: Dict[str, Any])**
+    * File: SEP-group-6/geopandas/_version.py
+    * Commit Link: [Commit](https://github.com/Ties020/SEP-group-6/commit/6d9cf9018d9069d539376f85c9370b43eef60541)
     * Screenshot of coverage results:
       
-      ![a2](https://github.com/Ties020/SEP-group-6/blob/main/report_images/andy/andy_f2_1.png)
+       ![a2](https://github.com/Ties020/SEP-group-6/blob/main/report_images/andy/git_describe_long_coverage.png)
+      
   ### Coverage Improvement
+  * **_check_engine(engine, func)**
+    * Tested File: SEP-group-6/geopandas/io/file.py
+    * Test: SEP-group-6/test_cheng.py
+    * Commit Link: [Commit](https://github.com/Ties020/SEP-group-6/commit/471b901ac9ceb74e993386c57ab807c96424eb0b)
+    * Old coverage:
+      
+       ![a3](https://github.com/Ties020/SEP-group-6/blob/main/report_images/andy/file_old_coverage.png)
+    * New coverage:
+      
+       ![a4](https://github.com/Ties020/SEP-group-6/blob/main/report_images/andy/file_cov_new.png)
+    * Comment: 
+     * As can be seen from the screenshots above, the coverage increased from 68% to 91% after including the new test. The improvement is a consequence of an
+       increase in the number of varying arguments supplied to the function as part of
+       testing. Thus, more conditionals are evaluated to true and additional branches are reached.
+       
+ * **render_git_describe_long(pieces: Dict[str, Any])**
+   * Tested File: SEP-group-6/geopandas/_version.py
+   * Test: SEP-group-6/test_rgdl.py
+   * Commit Link: [Commit](https://github.com/Ties020/SEP-group-6/commit/6d9cf9018d9069d539376f85c9370b43eef60541)
+   * Old coverage:
 
+     ![a5](https://github.com/Ties020/SEP-group-6/blob/main/report_images/andy/render_git_old_coverage.png)
+     
+   * New coverage:
+
+     ![a6](https://github.com/Ties020/SEP-group-6/blob/main/report_images/andy/render_git_new_coverage.png)
+
+   * Comment
+     * Unlike the first test, this test focused on a previously untested function, which naturally increases the overall coverage of the file when included.
+      Specifically, the coverage increased from 40% to 41% (after Voshon increased the coverage from 18% to 40%).
+     
 ## Ivaylo
-  * **_tooltip_popup(type,fields,gdf,kwds)**
-    * Path: SEP-group-6/geopandas/explore.py
-    * Commit Link: [Commit](https://github.com/Ties020/SEP-group-6/commit/3205f456bea68984624a3644865e8d983cf4c0da)
-    * 
-      ![i1](https://github.com/Ties020/SEP-group-6/blob/main/report_images/ivo/ivo_f1_1.png)
+  * **render_pep440_old(pieces: Dict[str, Any])**
+    * Path: SEP-group-6/geopandas/_version.py
+    * Commit Link: [Commit](https://github.com/Ties020/SEP-group-6/commit/9eaa676bbe30a08cf34722c818ff6d7c72f7e881)
+      
+      ![i1](https://github.com/Ties020/SEP-group-6/blob/main/report_images/ivo/coverage_pep_old.png)
+      
     * The coverage is 0% due to the fact that the function is not tested at all.
      
   * **render_pep440_pre(pieces: Dict[str, Any])**
     * Path: SEP-group-6/geopandas/_version.py
     * Commit Link: [Commit](https://github.com/Ties020/SEP-group-6/commit/7a4bcebb6c6e7cdeefe89099e48c2fd30fe9e8df)
-    * 
+      
       ![i2](https://github.com/Ties020/SEP-group-6/blob/main/report_images/ivo/render_pep_old.png)
     
     * The coverage is 0% due to the fact that the function is not tested at all.
 
 ### Coverage Improvement
-  * **_tooltip_popup(type,fields,gdf,kwds)**
-    * Path: SEP-group-6/geopandas/explore.py
-    * Commit Link: [Commit](https://github.com/Ties020/SEP-group-6/commit/45f26d3c10d4424a0ea6ad2a46ad8e88847abe42)
-    * Old Coverage:
-    
-      ![i3](ASK TIES TO SCREENSHOT REPORT)
-    * New Coverage:
-    
-      ![i4](ASK TIES TO SCREENSHOT REPORT)
+ * **render_pep440_old(pieces: Dict[str, Any])**
+    * Path: SEP-group-6/geopandas/_version.py
+    * Commit Link: [Commit](https://github.com/Ties020/SEP-group-6/commit/d121220c8eaa05d499693a8cbbdee6ad2a81f5d9)
 
 * **render_pep440_pre(pieces: Dict[str, Any])**
   * Path: SEP-group-6/geopandas/_version.py
