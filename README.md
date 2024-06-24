@@ -1,4 +1,4 @@
-# Report Assignment 1 (Still Draft)
+# Report Assignment 1
 ### By Group 6 : Voshon Fredison, Andreas Johannessen, Ivaylo Matsaliev, and Ties Schasfoort
 ## Tools/Repos
 ### Selected Project : [Geopandas](https://github.com/geopandas/geopandas)
@@ -129,7 +129,7 @@ In total, the coverage has increased to 40%:
      
 ## Ivaylo
   * **render_pep440_old(pieces: Dict[str, Any])**
-    * Path: SEP-group-6/geopandas/_version.py
+    * File: SEP-group-6/geopandas/_version.py
     * Commit Link: [Commit](https://github.com/Ties020/SEP-group-6/commit/9eaa676bbe30a08cf34722c818ff6d7c72f7e881)
       
       ![i1](https://github.com/Ties020/SEP-group-6/blob/main/report_images/ivo/coverage_pep_old.png)
@@ -137,8 +137,8 @@ In total, the coverage has increased to 40%:
     * The coverage is 0% due to the fact that the function is not tested at all.
      
   * **render_pep440_pre(pieces: Dict[str, Any])**
-    * Path: SEP-group-6/geopandas/_version.py
-    * Commit Link: [Commit](https://github.com/Ties020/SEP-group-6/commit/7a4bcebb6c6e7cdeefe89099e48c2fd30fe9e8df)
+    * File: SEP-group-6/geopandas/_version.py
+    * Commit Link: [Commit](https://github.com/Ties020/SEP-group-6/commit/d121220c8eaa05d499693a8cbbdee6ad2a81f5d9)
       
       ![i2](https://github.com/Ties020/SEP-group-6/blob/main/report_images/ivo/render_pep_old.png)
     
@@ -146,24 +146,36 @@ In total, the coverage has increased to 40%:
 
 ### Coverage Improvement
  * **render_pep440_old(pieces: Dict[str, Any])**
-    * Path: SEP-group-6/geopandas/_version.py
-    * Commit Link: [Commit](https://github.com/Ties020/SEP-group-6/commit/d121220c8eaa05d499693a8cbbdee6ad2a81f5d9)
+    * Tested File: SEP-group-6/geopandas/_version.py
+    * Test: SEP-group-6/test_ivo.py
+    * Commit Link: [Commit](https://github.com/Ties020/SEP-group-6/commit/2fa779515d1bb1aec46f817ee9f299dc1556d4d4)
+    * Old coverage:
+      
+      ![i3](https://github.com/Ties020/SEP-group-6/blob/main/report_images/ivo/version_old_coverage.png)
+      
+    * New coverage:
+      
+      ![i4](https://github.com/Ties020/SEP-group-6/blob/main/report_images/ivo/version_new_coverage_old.png)
 
 * **render_pep440_pre(pieces: Dict[str, Any])**
-  * Path: SEP-group-6/geopandas/_version.py
-  * Commit Link: [Commit](https://github.com/Ties020/SEP-group-6/commit/ec3a9fed44944b0c1e28146bfaabc7f63ab5789e)
+  * Tested File: SEP-group-6/geopandas/_version.py
+  * Test: SEP-group-6/test_ivo.py
+  * Commit Link: [Commit](https://github.com/Ties020/SEP-group-6/commit/861b64d22d760ad384221f928642e7d7c225a5ae)
   * Old Coverage:
 
-     ![i5](ASK TIES SCREENSHOT REPORT)
+     ![i5](https://github.com/Ties020/SEP-group-6/blob/main/report_images/ivo/version_old_coverage.png)
 
   * New Coverage:
    
-    ![i6](ASK TIES SCREENSHOT REPORT)
+    ![i6](https://github.com/Ties020/SEP-group-6/blob/main/report_images/ivo/version_new_cov_pre.png)
 
+  * The coverage of _version.py has increased from 18% to 23%. 
+
+The total coverage of _version.py has increased from 18% to 27% (before anyone else has improved the coverage of _version.py)
 
 ## Ties
  * **get_throttle_time(provider)**
-   * Path: Group-6-SEP/geopandas/tools/geocoding.py
+   * File: SEP-group-6/geopandas/tools/geocoding.py
    
     ![t1](https://github.com/Ties020/SEP-group-6/blob/main/report_images/ties/ties_f1_1.png)
  
@@ -173,7 +185,7 @@ In total, the coverage has increased to 40%:
  
    * The screenshot above shows that the branch coverage in function one was 100% post-improvement.
 * **_truncated_string(geom)**
-  * Path: Group-6-SEP/geopandas/testing.py
+  * File: SEP-group-6/geopandas/testing.py
  
     ![t3](https://github.com/Ties020/SEP-group-6/blob/main/report_images/ties/ties_f2_1.png)
 
@@ -183,7 +195,59 @@ In total, the coverage has increased to 40%:
 
     * The screenshot above shows that the branch coverage in function 2 was 100% post-improvement. We’re only looking at the id’s trunc_branch_1 and trunc_branch_2 for this function.
    
-  ### Coverage Improvement
+ ### Coverage Improvement
+  * **get_throttle_time(provider)**
+    * Tested File: SEP-group-6/geopandas/tools/geocoding.py
+    * Test: SEP-group-6/geopandas/tests/test_geocoding.py
+    * Commit Link: [Commit](https://github.com/Ties020/SEP-group-6/commit/3f29b36d5337f43855255e4d241ba8308ff39c42)
+    * Old Coverage:
+
+       ![t5](https://github.com/Ties020/SEP-group-6/blob/main/report_images/ties/geocoding_old.png)
+
+    * New Coverage:
+   
+       ![t6](https://github.com/Ties020/SEP-group-6/blob/main/report_images/ties/geocoding_new.png)
+
+    * So, the total coverage of geocoding.py has increase by 4%.
+      The branch coverage has increased from 50% to 100%. It has been improved by adding the test that also covers the if-statement below (with id throttle_branch_1):
+
+       ![t7](https://github.com/Ties020/SEP-group-6/blob/main/report_images/ties/get_throttle_imrpoved.png)
   
+  * **_truncated_string(geom)**
+    * Tested File: SEP-group-6/geopandas/testing.py:
+    * Test: SEP-group-6/geopandas/tests/test_testing.py
+    * Commit Link: [Commit](https://github.com/Ties020/SEP-group-6/commit/1128962be504584ba59d999275bea2a2d6bfc59e)
+    * Old Coverage:
+   
+       ![t8](https://github.com/Ties020/SEP-group-6/blob/main/report_images/ties/testing_old.png)
+
+    * New Coverage:
+      
+       ![t9](https://github.com/Ties020/SEP-group-6/blob/main/report_images/ties/testing_new.png)
+
+    * So, the total coverage of testing.py has increased by 2%.
+      The branch coverage has increased from 50% to 100%. It has been improved by adding the test that also covers the if-statement below (with id trunc_branch_1):
+
+       ![t10](https://github.com/Ties020/SEP-group-6/blob/main/report_images/ties/truncated_string_improved.png)
+      
+## Overall
+ ### Old overall coverage
+   ![overall_old1](https://github.com/Ties020/SEP-group-6/blob/main/report_images/whole_cover_before_1.png)
+   ![overall_old2](https://github.com/Ties020/SEP-group-6/blob/main/report_images/whole_cover_before_2.png)
+   
+ ### New overall coverage
+   ![overall_new1](https://github.com/Ties020/SEP-group-6/blob/main/report_images/whole_cover_after_1.png)
+   ![overall_new2](https://github.com/Ties020/SEP-group-6/blob/main/report_images/whole_cover_before_2.png)
 
 
+## Individual Contributions
+ ### Voshon
+   * Reorganized inconsistencies in the report
+ ### Andreas
+   * Found the project
+   * Made structural changes to the report
+### Ivaylo
+   * Converted the docx file to markdown
+### Ties
+   * Structure the report
+   * Made the screenshots of coverage for all members to ensure consistency
