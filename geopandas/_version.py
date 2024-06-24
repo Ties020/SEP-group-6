@@ -420,6 +420,8 @@ def plus_or_dot(pieces: Dict[str, Any]) -> str:
 COVERAGE_FLAGS_EXTRA = {
    "closest_tag": False,
    "distance_or_dirty": False,
+   "piece_dirty_else": False,
+   "distance_dirty_false": False,
    "dirty": False,
    "no_closing_tag": False,
    "no_closing_tag_dirty": False
@@ -447,6 +449,10 @@ def render_pep440(pieces: Dict[str, Any]) -> str:
             if pieces["dirty"]:
                 COVERAGE_FLAGS_EXTRA["dirty"] = True
                 rendered += ".dirty"
+            else:
+                COVERAGE_FLAGS_EXTRA["piece_dirty_else"] = True
+        else:
+            COVERAGE_FLAGS_EXTRA["distance_dirty_false"] = True
     else:
         COVERAGE_FLAGS_EXTRA["no_closing_tag"] = True
         # exception #1
