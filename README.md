@@ -132,7 +132,7 @@ In total, the coverage has increased to 40%:
     * File: SEP-group-6/geopandas/_version.py
     * Commit Link: [Commit](https://github.com/Ties020/SEP-group-6/commit/9eaa676bbe30a08cf34722c818ff6d7c72f7e881)
       
-      ![i1](https://github.com/Ties020/SEP-group-6/blob/main/report_images/ivo/coverage_pep_old.png)
+      ![i1](https://github.com/Ties020/SEP-group-6/blob/main/report_images/ivo/old_coverage.png)
       
     * The coverage is 0% due to the fact that the function is not tested at all.
      
@@ -148,7 +148,7 @@ In total, the coverage has increased to 40%:
  * **render_pep440_old(pieces: Dict[str, Any])**
     * Tested File: SEP-group-6/geopandas/_version.py
     * Test: SEP-group-6/test_ivo.py
-    * Commit Link: [Commit](https://github.com/Ties020/SEP-group-6/commit/2fa779515d1bb1aec46f817ee9f299dc1556d4d4)
+    * Commit Link: [Commit](https://github.com/Ties020/SEP-group-6/commit/3c607e615fe6dbdd98f30c75d4eec53ff91a5602)
     * Old coverage:
       
       ![i3](https://github.com/Ties020/SEP-group-6/blob/main/report_images/ivo/version_old_coverage.png)
