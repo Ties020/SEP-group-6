@@ -598,6 +598,9 @@ coverage_render_pep440_old = {
     "branch3" : False,
     "branch4" : False,
     "branch5" : False,
+    "branch6" : False,
+    "branch7" : False,
+    "branch8" : False,
 }
 
 def render_pep440_old(pieces: Dict[str, Any]) -> str:
@@ -617,13 +620,23 @@ def render_pep440_old(pieces: Dict[str, Any]) -> str:
             if pieces["dirty"]:
                 coverage_render_pep440_old["branch3"] = True 
                 rendered += ".dev0"
+            else:
+                #invisible else
+                coverage_render_pep440_old["branch4"] = True 
+        else:
+            #invisible else
+            coverage_render_pep440_old["branch5"] = True 
     else:
-        coverage_render_pep440_old["branch4"] = True 
+        coverage_render_pep440_old["branch6"] = True 
         # exception #1
         rendered = "0.post%d" % pieces["distance"]
         if pieces["dirty"]:
-            coverage_render_pep440_old["branch5"] = True 
+            coverage_render_pep440_old["branch7"] = True 
             rendered += ".dev0"
+        else:
+            #invisible else
+            coverage_render_pep440_old["branch8"] = True 
+
     return rendered
 
 
