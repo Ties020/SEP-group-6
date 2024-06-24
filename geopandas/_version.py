@@ -665,6 +665,7 @@ coverage_branches_rgdl = {
     "pieces_closest_tag": False,
     "pieces_short": False,
     "pieces_dirty": False,
+    "invisible_dirty": False,
     "return": False,
 }
 
@@ -689,6 +690,8 @@ def render_git_describe_long(pieces: Dict[str, Any]) -> str:
     if pieces["dirty"]:
         coverage_branches_rgdl["pieces_dirty"] = True
         rendered += "-dirty"
+    else:
+        coverage_branches_rgdl["invisible_dirty"] = True
     coverage_branches_rgdl["return"] = True
     return rendered
 

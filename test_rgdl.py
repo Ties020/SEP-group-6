@@ -1,13 +1,11 @@
-import pathlib
-
 from operator import countOf
 from geopandas import _version
 from geopandas._version import coverage_branches_rgdl
 
 
 # --------
-# Func: _expand_user(path)
-# Path: geopandas/io/file.py
+# Func: render_git_describe_long(pieces: Dict[str, Any])
+# Path: geopandas/_version.py
 # --------
 
 def test_git_describe_long_ct(): 
@@ -34,7 +32,7 @@ def test_git_describe_long_short():
 def print_coverage(flags: dict):
     for branch, hit in flags.items():
         print(f"{branch} was {'hit' if hit else 'not hit'}")
-    print(f"Coverage: {float(countOf(flags.values(), True) / len(flags)) * 100}%")
+    print(f"Coverage: {round((float(countOf(flags.values(), True) / len(flags)) * 100), 2)}%")
 
 
 # Main
