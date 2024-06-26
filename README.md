@@ -45,9 +45,11 @@ We used coverage.py to compute the initial branch coverage of the entire project
   * In this function there are fewer branches so I did not have to add many flags. I also did the same as I’ve done for the previous one and that is to add the flags in each branch:
     
     ![v6](https://github.com/Ties020/SEP-group-6/blob/main/report_images/voshi/coverage_flags_extra_examples.png)
-  * After all of this I was able to get another 100% branch coverage:
+  * After all of this I was able to get another 85.7% branch coverage:
     
-    ![v7](https://github.com/Ties020/SEP-group-6/blob/main/report_images/voshi/render_pep440_branch_hit.png)
+    ![v7](https://github.com/Ties020/SEP-group-6/blob/main/report_images/voshi/render_pep440_branch_hit_new.png)
+
+  * It’s not 100% because I didn't test the hit the hidden “else” branches.
     
 ### Coverage Improvement
 * **render(pieces: Dict[str, Any], style: str)**
@@ -105,9 +107,9 @@ In total, the coverage has increased to 40%:
        ![a3](https://github.com/Ties020/SEP-group-6/blob/main/report_images/andy/file_old_coverage.png)
     * New coverage:
       
-       ![a4](https://github.com/Ties020/SEP-group-6/blob/main/report_images/andy/file_cov_new.png)
-    * Comment: 
-     * As can be seen from the screenshots above, the coverage increased from 68% to 91% after including the new test. The improvement is a consequence of an
+       ![a4](https://github.com/Ties020/SEP-group-6/blob/main/report_images/andy/check_engine_new_percentage.png)
+   
+    * As can be seen from the screenshots above, the coverage increased from 68% to 91% after including the new test. The improvement is a consequence of an
        increase in the number of varying arguments supplied to the function as part of
        testing. Thus, more conditionals are evaluated to true and additional branches are reached.
        
@@ -117,11 +119,11 @@ In total, the coverage has increased to 40%:
    * Commit Link: [Commit](https://github.com/Ties020/SEP-group-6/commit/6d9cf9018d9069d539376f85c9370b43eef60541)
    * Old coverage:
 
-     ![a5](https://github.com/Ties020/SEP-group-6/blob/main/report_images/andy/render_git_old_coverage.png)
+     ![a5](https://github.com/Ties020/SEP-group-6/blob/main/report_images/voshi/old_cov_version.png)
      
    * New coverage:
 
-     ![a6](https://github.com/Ties020/SEP-group-6/blob/main/report_images/andy/render_git_new_coverage.png)
+     ![a6](https://github.com/Ties020/SEP-group-6/blob/main/report_images/andy/render_git_new_percentage.png)
 
    * Comment
      * Unlike the first test, this test focused on a previously untested function, which naturally increases the overall coverage of the file when included.
@@ -148,7 +150,7 @@ In total, the coverage has increased to 40%:
  * **render_pep440_old(pieces: Dict[str, Any])**
     * Tested File: SEP-group-6/geopandas/_version.py
     * Test: SEP-group-6/test_ivo.py
-    * Commit Link: [Commit](https://github.com/Ties020/SEP-group-6/commit/3c607e615fe6dbdd98f30c75d4eec53ff91a5602)
+    * Commit Link: [Commit](https://github.com/Ties020/SEP-group-6/commit/2fa779515d1bb1aec46f817ee9f299dc1556d4d4)
     * Old coverage:
       
       ![i3](https://github.com/Ties020/SEP-group-6/blob/main/report_images/ivo/version_old_coverage.png)
@@ -236,7 +238,7 @@ The total coverage of _version.py has increased from 18% to 27% (before anyone e
    ![overall_old2](https://github.com/Ties020/SEP-group-6/blob/main/report_images/whole_cover_before_2.png)
    
  ### New overall coverage
-   ![overall_new1](https://github.com/Ties020/SEP-group-6/blob/main/report_images/whole_cover_after_1.png)
+   ![overall_new1](https://github.com/Ties020/SEP-group-6/blob/main/report_images/new_overall_coverage1.png)
    ![overall_new2](https://github.com/Ties020/SEP-group-6/blob/main/report_images/whole_cover_before_2.png)
 
 
