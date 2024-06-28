@@ -239,7 +239,7 @@ The total coverage of _version.py has increased from 18% to 27% (before anyone e
    
  ### New overall coverage
    ![overall_new1](https://github.com/Ties020/SEP-group-6/blob/main/report_images/new_overall_coverage1.png)
-   ![overall_new2](https://github.com/Ties020/SEP-group-6/blob/main/report_images/whole_cover_before_2.png)
+   ![overall_new2](https://github.com/Ties020/SEP-group-6/blob/main/report_images/new_overall_coverage2.png)
 
 
 ## Individual Contributions
